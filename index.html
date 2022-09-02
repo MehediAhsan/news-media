@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Media</title>
+    <!-- tailwindcss and daisy ui CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="container mx-auto">
+    <!-- header start -->
+    <header>
+        <div class="navbar bg-base-100 border-y-2 py-3">
+            <div class="flex-1">
+              <a class="btn btn-ghost normal-case text-xl text-primary">Online News</a>
+            </div>
+            <div class="flex-none gap-2">
+                <ul class="flex text-gray-500">
+                    <button class="mr-6 hover:text-primary"><a>News</a></button>
+                    <button class="mr-6 hover:text-primary"><a>Blog</a></button>
+                </ul>
+              <div class="dropdown dropdown-end">
+                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                  <div class="w-10 rounded-full">
+                    <img src="https://placeimg.com/80/80/people" />
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+    </header>
+    <!-- header end -->
+    <main>
+        <!-- manubar start -->
+        <section class="p-7">
+            <ul id="categories-all" class="flex justify-between">
+                
+            </ul>
+        </section>
+        <!-- manubar end -->
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
