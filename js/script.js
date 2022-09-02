@@ -31,6 +31,7 @@ loadCategories();
 // display news
 
 const loadNews = async(category_id) => {
+    toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     try{
         const res = await fetch(url);
@@ -46,6 +47,7 @@ const displayNews = allNews => {
     console.log(allNews);
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
+    toggleSpinner(false);
     allNews.forEach(news => {
         console.log(news);
         const {thumbnail_url,title,details,author,total_view,_id} = news;
@@ -105,4 +107,17 @@ const displayNewsDetails = news => {
     <figure><img class="p-6" src="${image_url}" alt="Album"></figure>
     <p class="text-gray-500">${details.slice(0,500)}</p>    
     `
+}
+
+
+// spinner
+
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+        loaderSection.classList.remove('hidden');
+    }
+    else{
+        loaderSection.classList.add('hidden');
+    }
 }
