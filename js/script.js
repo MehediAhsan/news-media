@@ -27,6 +27,17 @@ const displayCategories = categories => {
 
 loadCategories();
 
+// spinner
+
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+        loaderSection.classList.remove('hidden');
+    }
+    else{
+        loaderSection.classList.add('hidden');
+    }
+}
 
 // display news
 
@@ -48,6 +59,19 @@ const displayNews = allNews => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     toggleSpinner(false);
+    // item count
+    const itemCount = document.getElementById('item-count');
+    if(allNews.length !== 0){
+        itemCount.classList.remove('hidden');
+        itemCount.innerHTML = `
+        <h2 class="font-semibold">${allNews.length} items found for category</h2>
+        `
+    }
+    else{
+        itemCount.innerHTML = `
+        <h2 class="font-semibold">No items found for category</h2>
+        `
+    }
     allNews.forEach(news => {
         console.log(news);
         const {thumbnail_url,title,details,author,total_view,_id} = news;
@@ -110,14 +134,3 @@ const displayNewsDetails = news => {
 }
 
 
-// spinner
-
-const toggleSpinner = isLoading => {
-    const loaderSection = document.getElementById('loader');
-    if(isLoading){
-        loaderSection.classList.remove('hidden');
-    }
-    else{
-        loaderSection.classList.add('hidden');
-    }
-}
