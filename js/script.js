@@ -101,7 +101,7 @@ const displayNews = allNews => {
     });
 }
 
-loadNews();
+loadNews('05');
 
 
 // display news details
