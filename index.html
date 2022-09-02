@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="container mx-auto">
+<body class="container mx-auto flex flex-col min-h-screen">
     <!-- header start -->
     <header>
         <div class="navbar bg-base-100 border-y-2 py-3">
@@ -48,7 +48,26 @@
             </div>
         </section>
         <!-- card end -->
+
+        <!-- modal start -->
+        <section>
+            <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+            <label for="my-modal-4" class="modal cursor-pointer">
+              <label id="news-details" class="modal-box relative" for="">
+                
+              </label>
+            </label>
+        </section>
+        <!-- modal end -->
     </main>
+
+    <!-- footer start -->
+    <footer class="footer footer-center p-6 text-gray-500 font-semibold border-y-2 mt-auto">
+      <div>
+        <p>Copyright © 2022 - Online Media</p>
+      </div>
+    </footer>
+    <!-- footer end -->
 
     <script src="js/script.js"></script>
 </body>
