@@ -1,90 +1,125 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Media</title>
-    <!-- tailwindcss and daisy ui CDN-->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Media</title>
+  <script src="https://kit.fontawesome.com/91575a0922.js" crossorigin="anonymous"></script>
+  <!-- tailwindcss and daisy ui CDN-->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="container mx-auto flex flex-col min-h-screen">
-    <!-- header start -->
-    <header>
-        <div class="navbar bg-base-100 border-y-2 py-3">
-            <div class="flex-1">
-              <a class="btn btn-ghost normal-case text-xl text-primary">Online Media</a>
-            </div>
-            <div class="flex-none gap-2">
-                <ul class="flex text-gray-500">
-                    <button class="mr-6 hover:text-primary"><a>News</a></button>
-                    <button class="mr-6 hover:text-primary"><a href="blog.html">Blog</a></button>
-                </ul>
-              <div class="dropdown dropdown-end">
-                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                  <div class="w-10 rounded-full">
-                    <img src="https://placeimg.com/80/80/people" />
-                  </div>
-                </label>
-              </div>
-            </div>
-          </div>
-    </header>
-    <!-- header end -->
-    <main>
-        <!-- manubar start -->
-        <section class="p-7">
-            <ul id="categories-all" class="flex justify-between">
-                
-            </ul>
-        </section>
-        <!-- manubar end -->
-
-        <!-- spinner start -->
-        <section class="flex justify-center items-center">
-          <div id="loader" class="hidden mt-20">
-            <button class="btn loading bg-white text-black border-0">loading...</button>
-          </div>
-        </section>
-        <!-- spinner end -->
-
-        <!-- item found section start -->
-        <section>
-          <div id="item-count" class="hidden p-4 shadow-lg mb-6">
-            
-          </div>
-        </section>
-        <!-- item found section end -->
-
-        <!-- card start -->
-        <section>
-            <div id="news-container">
-
-            </div>
-        </section>
-        <!-- card end -->
-
-        <!-- modal start -->
-        <section>
-            <input type="checkbox" id="my-modal-4" class="modal-toggle" />
-            <label for="my-modal-4" class="modal cursor-pointer">
-              <label id="news-details" class="modal-box relative" for="">
-                
-              </label>
-            </label>
-        </section>
-        <!-- modal end -->
-    </main>
-
-    <!-- footer start -->
-    <footer class="footer footer-center p-6 text-gray-500 font-semibold border-y-2 mt-auto">
-      <div>
-        <p>Copyright © 2022 - Online Media</p>
+  <!-- header start -->
+  <header>
+    <div class="navbar bg-base-100 border-y-2 py-3">
+      <div class="flex-1">
+        <a href="./index.html" class="flex title-font font-medium items-center text-indigo-700 mb-4 md:mb-0">
+          <i class="fa-regular fa-newspaper text-3xl text-indigo-500"></i>
+          <span class="ml-3 text-xl text-indigo-500 font-semibold"><span
+              class="p-2 mr-2 rounded bg-indigo-500 text-white">Online</span>Media</span>
+        </a>
       </div>
-    </footer>
-    <!-- footer end -->
+      <div class="flex-none gap-2">
+        <ul class="md:ml-auto flex flex-wrap items-center text-base justify-center text-indigo-400">
+          <a
+            class="mr-5 relative hover:text-indigo-700 font-bold text-indigo-500 after:-bottom-1 after:border-b-2 after:absolute after:w-1/2 after:left-1/2 after:-translate-x-1/2 hover:after:w-full cursor-pointer after:transition-all after:duration-300 after:border-indigo-500"
+            >News</a
+          >
+          <a
+            href="./blog.html"
+            class="mr-5 hover:text-indigo-700 cursor-pointer"
+            >Blog</a
+          >
+        </ul>
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img src="https://placeimg.com/80/80/people" />
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- header end -->
+  <main>
+    <!-- manubar start -->
+    <section class="p-7">
+      <ul id="categories-all" class="flex justify-between">
 
-    <script src="js/script.js"></script>
+      </ul>
+    </section>
+    <!-- manubar end -->
+
+    <!-- spinner start -->
+    <section class="flex justify-center items-center">
+      <div id="loader" class="hidden mt-20">
+        <button class="btn loading bg-white text-black border-0">loading...</button>
+      </div>
+    </section>
+    <!-- spinner end -->
+
+    <!-- item found section start -->
+    <section>
+      <div id="item-count" class="hidden p-4 shadow-lg mb-6">
+
+      </div>
+    </section>
+    <!-- item found section end -->
+
+    <!-- shorted view start -->
+    <section class="flex justify-between items-center">
+      <div class="flex items-center gap-4 my-10">
+        <span class="text-lg font-semibold">Sort By View :</span>
+      </div>
+      <div class="space-x-2">
+        <button
+          class="inline-flex text-lg text-white items-center justify-center w-36 p-2.5 bg-indigo-500 rounded"
+        >
+          Today’s Pick
+        </button>
+        <button
+          class="inline-flex text-lg text-indigo-500 items-center justify-center w-28 p-2.5 border rounded border-indigo-500"
+        >
+          Trending
+        </button>
+      </div>
+    </section>
+    <!-- shorted view end -->
+
+    <!-- card start -->
+    <section>
+      <div id="news-container">
+
+      </div>
+    </section>
+    <!-- card end -->
+
+    <!-- modal start -->
+    <section>
+      <input type="checkbox" id="my-modal-4" class="modal-toggle" />
+      <label for="my-modal-4" class="modal cursor-pointer">
+        <label id="news-details" class="modal-box relative" for="">
+
+        </label>
+      </label>
+    </section>
+    <!-- modal end -->
+  </main>
+
+  <!-- footer start -->
+  <footer class="footer footer-center p-6 text-gray-500 font-semibold border-y-2 mt-auto">
+    <div>
+      <p>Copyright © 2022 - Online Media</p>
+    </div>
+  </footer>
+  <!-- footer end -->
+
+  <script src="js/script.js"></script>
 </body>
+
 </html>

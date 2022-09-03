@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Media</title>
+    <script src="https://kit.fontawesome.com/91575a0922.js" crossorigin="anonymous"></script>
     <!-- tailwindcss and daisy ui CDN-->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,12 +15,24 @@
     <header>
         <div class="navbar bg-base-100 border-y-2 py-3">
             <div class="flex-1">
-              <a class="btn btn-ghost normal-case text-xl text-primary">Online Media</a>
+              <a href="./index.html" class="flex title-font font-medium items-center text-indigo-700 mb-4 md:mb-0">
+                <i class="fa-regular fa-newspaper text-3xl text-indigo-500"></i>
+                <span class="ml-3 text-xl text-indigo-500 font-semibold"><span
+                    class="p-2 mr-2 rounded bg-indigo-500 text-white">Online</span>Media</span>
+              </a>
             </div>
             <div class="flex-none gap-2">
-                <ul class="flex text-gray-500">
-                    <button class="mr-6 hover:text-primary"><a href="index.html">News</a></button>
-                    <button class="mr-6 hover:text-primary"><a>Blog</a></button>
+                <ul class="md:ml-auto flex flex-wrap items-center text-base justify-center text-indigo-400">
+                  <a
+                  href="./index.html"
+                  class="mr-5 hover:text-indigo-700 cursor-pointer"
+                  >News</a
+                >
+                <a
+                  href="./blog.html"
+                  class="mr-5 relative hover:text-indigo-700 font-bold text-indigo-500 after:-bottom-1 after:border-b-2 after:absolute after:w-1/2 after:left-1/2 after:-translate-x-1/2 hover:after:w-full cursor-pointer after:transition-all after:duration-300 after:border-indigo-500"
+                  >Blog</a
+                >
                 </ul>
               <div class="dropdown dropdown-end">
                 <label tabindex="0" class="btn btn-ghost btn-circle avatar">

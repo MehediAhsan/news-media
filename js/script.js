@@ -17,7 +17,7 @@ const displayCategories = categories => {
     categories.forEach(categorie => {
         // console.log(categorie);
         const categoriesName = document.createElement('button');
-        categoriesName.classList.add('text-gray-600','hover:text-primary','focus:text-primary');
+        categoriesName.classList.add('text-gray-600','hover:text-primary','focus:text-primary','font-semibold');
         categoriesName.innerHTML = `
         <a onclick="loadNews('${categorie.category_id}')">${categorie.category_name}</a>
         `;
@@ -83,13 +83,24 @@ const displayNews = allNews => {
         <div class="card-body">
           <h2 class="card-title font-bold">${title}</h2>
           <p class="text-gray-500">${details.slice(0,400)+'...'}</p>
-          <div class="flex justify-between">
-          <div class="flex">
+          <div class="flex items-center justify-between flex-wrap text-gray-600 text-lg my-4">
+          <div class="flex space-x-2.5 items-center justify-start basis-3/4 md:basis-1/4">
           <img class="w-10 h-10 rounded-full mr-3" src="${img}" alt="Album">
-          <h3>${name ? name : 'Not available'}</h3>
+          <div class="inline-flex flex-col items-start justify-start">
+          <h3 class="text-base text-gray-800 whitespace-nowrap">${name ? name : 'Not available'}</h3>
+          <p class="text-sm text-gray-500 capitalize">${published_date}</p>
           </div>
-          <div>
-          <h3>${total_view ? total_view : 'Not available'}</h3>
+          </div>
+          <div class="flex space-x-3 items-center justify-end w-20 h-6 basis-1/4 md:basis-0">
+          <i class="fa-regular fa-eye"></i>
+          <h3 class="text-lg font-semibold text-gray-600 ">${total_view ? total_view : 'Not available'}</h3>
+          </div>
+          <div class="flex space-x-2.5 basis-1/2 md:basis-0 items-center justify-end w-1/5 h-6">
+          <i class="fa-regular fa-star-half-stroke"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
           </div>  
           <div class="card-actions justify-end">
             <label onclick="loadNewsDetails('${_id}')" for="my-modal-4" class="btn modal-button btn-primary">Details</label>
