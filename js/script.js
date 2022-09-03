@@ -51,7 +51,6 @@ const loadNews = async({category_id,category_name}) => {
     try{
         const res = await fetch(url);
         const data = await res.json();
-        displayNews(data.data);
         // item count
         const itemCount = document.getElementById('item-count');
         if(data.data.length !== 0){
@@ -64,7 +63,8 @@ const loadNews = async({category_id,category_name}) => {
             itemCount.innerHTML = `
             <h2 class="font-semibold">${data.data.length} items found for category ${category_name}</h2>
             `
-        }   
+        }
+        displayNews(data.data);      
     }
     catch(error){
         console.log(error);
@@ -82,7 +82,7 @@ const displayNews = allNews => {
 
     allNews.forEach(news => {
         console.log(news);
-        const {thumbnail_url,title,details,author,total_view,_id} = news;
+        const {thumbnail_url,title,details,author,total_view,_id,image_url} = news;
         const {name,img,published_date} = author;
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('card','lg:card-side','bg-base-100','shadow-xl','mb-6');
@@ -90,13 +90,13 @@ const displayNews = allNews => {
         <figure><img class="p-6" src="${thumbnail_url}" alt="Album"></figure>
         <div class="card-body">
           <h2 class="card-title font-bold">${title}</h2>
-          <p class="text-gray-500">${details.slice(0,400)+'...'}</p>
+          <p class="text-gray-500">${details.slice(0,350)+'...'}</p>
           <div class="flex items-center justify-between flex-wrap text-gray-600 text-lg my-4">
           <div class="flex space-x-2.5 items-center justify-start basis-3/4 md:basis-1/4">
           <img class="w-10 h-10 rounded-full mr-3" src="${img}" alt="Album">
           <div class="inline-flex flex-col items-start justify-start">
           <h3 class="text-base text-gray-800 whitespace-nowrap">${name ? name : 'Not available'}</h3>
-          <p class="text-sm text-gray-500 capitalize">${published_date}</p>
+          <p class="text-sm text-gray-500 capitalize">${published_date.slice(0,10)}</p>
           </div>
           </div>
           <div class="flex space-x-3 items-center justify-end w-20 h-6 basis-1/4 md:basis-0">
@@ -111,7 +111,32 @@ const displayNews = allNews => {
           <i class="fa-regular fa-star"></i>
           </div>  
           <div class="card-actions justify-end">
-            <label onclick="loadNewsDetails('${_id}')" for="my-modal-4" class="btn modal-button btn-primary">Details</label>
+          <!-- The button to open modal -->
+          <label for="modal${_id}" class="btn modal-button btn-primary">Details</label>
+          
+          <input type="checkbox" id="modal${_id}" class="modal-toggle" />
+          <div class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+   
+            <figure><img class="w-full" src="${image_url}" alt="Album"></figure>
+            <h3 class="text-lg font-bold my-5 text-gray-800">${title}</h3>
+
+            <div class="flex space-x-2.5 items-center justify-start basis-3/4 md:basis-1/4 mb-5 border-2 p-3">
+            <img class="w-14 h-14 rounded-full mr-3" src="${img}" alt="Album">
+            <div class="inline-flex flex-col items-start justify-start">
+            <h3 class="text-base text-gray-700 whitespace-nowrap font-semibold">${name ? name : 'Not available'}</h3>
+            <p class="text-sm text-gray-500 capitalize">${published_date}</p>
+            </div>
+            </div>
+
+            <p class="text-gray-500 first-letter:text-5xl first-letter:font-semibold">${details.slice(0,600)}</p>
+            
+            <div class="modal-action">
+                <label for="modal${_id}" class="h-10 w-10 bg-indigo-100 text-indigo-500 grid place-content-center rounded-full text-xl hover:bg-indigo-200 hover:text-2xl duration-200 cursor-pointer mx-auto "><i class="fa-solid fa-xmark"></i></label>
+            </div>
+            </div>
+          </div>
+            
           </div>
           </div> 
         </div>        
@@ -120,36 +145,4 @@ const displayNews = allNews => {
     });
 }
 
-loadNews({category_id:'05',category_name:'Entertainment'});
-
-
-// display news details
-
-
-const loadNewsDetails = async(news_id) => {
-    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
-    try{
-        const res = await fetch(url);
-        const data = await res.json();
-        displayNewsDetails(data.data[0]);
-    }
-    catch(error){
-        console.log(error);
-    }
-}
-
-
-const displayNewsDetails = news => {
-    const {title,details,author,total_view,image_url} = news;
-    const {name,img,published_date} = author;
-    console.log(news);
-    const newsDetails = document.getElementById('news-details');
-    newsDetails.innerText = '';
-    newsDetails.innerHTML = `
-    <h3 class="text-lg font-bold">${title}</h3>
-    <figure><img class="p-6" src="${image_url}" alt="Album"></figure>
-    <p class="text-gray-500">${details.slice(0,500)}</p>    
-    `
-}
-
-
+loadNews({category_id:'01',category_name:'Breaking News'});

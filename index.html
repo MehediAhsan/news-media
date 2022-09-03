@@ -10,12 +10,19 @@
   <!-- tailwindcss and daisy ui CDN-->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <style type="text/tailwindcss">
+    @layer components{
+      ::-webkit-scrollbar{
+        @apply w-0;
+      }
+    }
+  </style>
 </head>
 
 <body class="container mx-auto flex flex-col min-h-screen">
   <!-- header start -->
   <header>
-    <div class="navbar bg-base-100 border-y-2 py-3">
+    <div class="navbar bg-base-100 border-y-2 py-3 flex flex-col sm:flex-row">
       <div class="flex-1">
         <a href="./index.html" class="flex title-font font-medium items-center text-indigo-700 mb-4 md:mb-0">
           <i class="fa-regular fa-newspaper text-3xl text-indigo-500"></i>
@@ -43,7 +50,7 @@
   <main>
     <!-- manubar start -->
     <section class="p-7">
-      <ul id="categories-all" class="flex justify-between">
+      <ul id="categories-all" class="flex flex-col md:flex-row justify-between">
         <button class="text-gray-600 hover:text-primary font-semibold"><a>Home</a></button>
       </ul>
     </section>
@@ -66,11 +73,11 @@
     <!-- item found section end -->
 
     <!-- shorted view start -->
-    <section class="flex justify-between items-center">
+    <section class="flex justify-between items-center px-4">
       <div class="flex items-center gap-4 my-10">
         <span class="text-lg font-semibold">Sort By View :</span>
       </div>
-      <div class="space-x-2">
+      <div class="space-x-2 hidden sm:block">
         <button class="inline-flex text-lg text-white items-center justify-center w-36 p-2.5 bg-indigo-500 rounded">
           Today’s Pick
         </button>
@@ -89,17 +96,7 @@
       </div>
     </section>
     <!-- card end -->
-
-    <!-- modal start -->
-    <section>
-      <input type="checkbox" id="my-modal-4" class="modal-toggle" />
-      <label for="my-modal-4" class="modal cursor-pointer">
-        <label id="news-details" class="modal-box relative" for="">
-
-        </label>
-      </label>
-    </section>
-    <!-- modal end -->
+    
   </main>
 
   <!-- footer start -->
