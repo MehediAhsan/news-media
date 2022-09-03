@@ -17,7 +17,7 @@ const displayCategories = categories => {
     categories.forEach(categorie => {
         // console.log(categorie);
         const categoriesName = document.createElement('button');
-        categoriesName.classList.add('text-gray-600','hover:text-primary','focus:text-primary','font-semibold');
+        categoriesName.classList.add('text-gray-500','hover:text-primary','focus:text-primary','font-semibold');
         categoriesName.innerHTML = `
         <a class='anchor'>${categorie.category_name}</a>
         `;
@@ -127,7 +127,7 @@ const displayNews = allNews => {
             </div>
             </div>
 
-            <p class="text-gray-500 first-letter:text-5xl first-letter:font-semibold">${details}</p>
+            <p class="text-gray-500 first-letter:text-5xl first-letter:font-semibold">${details.slice(0,800)}</p>
             
             <div class="modal-action">
                 <label for="modal${_id}" class="h-10 w-10 bg-indigo-100 text-indigo-500 grid place-content-center rounded-full text-xl hover:bg-indigo-200 hover:text-2xl duration-200 cursor-pointer mx-auto "><i class="fa-solid fa-xmark"></i></label>
@@ -143,4 +143,4 @@ const displayNews = allNews => {
     });
 }
 
-loadNews({category_id:'01',category_name:'Breaking News'});
+loadNews({category_id:'05',category_name:'Entertainment'});
