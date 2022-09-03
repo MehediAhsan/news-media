@@ -19,9 +19,12 @@ const displayCategories = categories => {
         const categoriesName = document.createElement('button');
         categoriesName.classList.add('text-gray-600','hover:text-primary','focus:text-primary','font-semibold');
         categoriesName.innerHTML = `
-        <a onclick="loadNews('${categorie.category_id}')">${categorie.category_name}</a>
+        <a class='anchor'>${categorie.category_name}</a>
         `;
         CategoriesAll.appendChild(categoriesName);
+        categoriesName.querySelector('.anchor').onclick = ()=>{
+            loadNews(categorie)
+        }
     });
 }
 
@@ -41,13 +44,27 @@ const toggleSpinner = isLoading => {
 
 // display news
 
-const loadNews = async(category_id) => {
+const loadNews = async({category_id,category_name}) => {
+    console.log(category_name);
     toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     try{
         const res = await fetch(url);
         const data = await res.json();
         displayNews(data.data);
+        // item count
+        const itemCount = document.getElementById('item-count');
+        if(data.data.length !== 0){
+            itemCount.classList.remove('hidden');
+            itemCount.innerHTML = `
+            <h2 class="font-semibold">${data.data.length} items found for category ${category_name}</h2>
+            `
+        }
+        else{
+            itemCount.innerHTML = `
+            <h2 class="font-semibold">${data.data.length} items found for category ${category_name}</h2>
+            `
+        }   
     }
     catch(error){
         console.log(error);
@@ -59,19 +76,6 @@ const displayNews = allNews => {
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     toggleSpinner(false);
-    // item count
-    const itemCount = document.getElementById('item-count');
-    if(allNews.length !== 0){
-        itemCount.classList.remove('hidden');
-        itemCount.innerHTML = `
-        <h2 class="font-semibold">${allNews.length} items found for category</h2>
-        `
-    }
-    else{
-        itemCount.innerHTML = `
-        <h2 class="font-semibold">No items found for category</h2>
-        `
-    }
     
     // news shorted by total view
     allNews.sort((a, b) => b.total_view - a.total_view);
@@ -116,7 +120,7 @@ const displayNews = allNews => {
     });
 }
 
-loadNews('05');
+loadNews({category_id:'05',category_name:'Entertainment'});
 
 
 // display news details
@@ -140,7 +144,7 @@ const displayNewsDetails = news => {
     const {name,img,published_date} = author;
     console.log(news);
     const newsDetails = document.getElementById('news-details');
-    newsDetails.textContent = '';
+    newsDetails.innerText = '';
     newsDetails.innerHTML = `
     <h3 class="text-lg font-bold">${title}</h3>
     <figure><img class="p-6" src="${image_url}" alt="Album"></figure>
