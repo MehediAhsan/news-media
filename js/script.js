@@ -45,7 +45,6 @@ const toggleSpinner = isLoading => {
 // display news
 
 const loadNews = async({category_id,category_name}) => {
-    console.log(category_name);
     toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     try{
@@ -72,7 +71,6 @@ const loadNews = async({category_id,category_name}) => {
 }
 
 const displayNews = allNews => {
-    console.log(allNews);
     const newsContainer = document.getElementById('news-container');
     newsContainer.textContent = '';
     toggleSpinner(false);
@@ -96,12 +94,12 @@ const displayNews = allNews => {
           <img class="w-10 h-10 rounded-full mr-3" src="${img}" alt="Album">
           <div class="inline-flex flex-col items-start justify-start">
           <h3 class="text-base text-gray-800 whitespace-nowrap">${name ? name : 'Not available'}</h3>
-          <p class="text-sm text-gray-500 capitalize">${published_date.slice(0,10)}</p>
+          <p class="text-sm text-gray-500 capitalize">${published_date ? published_date.slice(0,10) : 'Not available'}</p>
           </div>
           </div>
           <div class="flex space-x-3 items-center justify-end w-20 h-6 basis-1/4 md:basis-0">
           <i class="fa-regular fa-eye"></i>
-          <h3 class="text-lg font-semibold text-gray-600 ">${total_view ? total_view : 'Not available'}</h3>
+          <h3 class="text-lg font-semibold text-gray-600 ">${(total_view !== null) ? total_view : 'Not available'}</h3>
           </div>
           <div class="flex space-x-2.5 basis-1/2 md:basis-0 items-center justify-end w-1/5 h-6">
           <i class="fa-regular fa-star-half-stroke"></i>
@@ -125,11 +123,11 @@ const displayNews = allNews => {
             <img class="w-14 h-14 rounded-full mr-3" src="${img}" alt="Album">
             <div class="inline-flex flex-col items-start justify-start">
             <h3 class="text-base text-gray-700 whitespace-nowrap font-semibold">${name ? name : 'Not available'}</h3>
-            <p class="text-sm text-gray-500 capitalize">${published_date}</p>
+            <p class="text-sm text-gray-500 capitalize">${published_date ? published_date : 'Not available'}</p>
             </div>
             </div>
 
-            <p class="text-gray-500 first-letter:text-5xl first-letter:font-semibold">${details.slice(0,600)}</p>
+            <p class="text-gray-500 first-letter:text-5xl first-letter:font-semibold">${details}</p>
             
             <div class="modal-action">
                 <label for="modal${_id}" class="h-10 w-10 bg-indigo-100 text-indigo-500 grid place-content-center rounded-full text-xl hover:bg-indigo-200 hover:text-2xl duration-200 cursor-pointer mx-auto "><i class="fa-solid fa-xmark"></i></label>
