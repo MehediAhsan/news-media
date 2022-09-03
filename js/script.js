@@ -72,6 +72,10 @@ const displayNews = allNews => {
         <h2 class="font-semibold">No items found for category</h2>
         `
     }
+    
+    // news shorted by total view
+    allNews.sort((a, b) => b.total_view - a.total_view);
+
     allNews.forEach(news => {
         console.log(news);
         const {thumbnail_url,title,details,author,total_view,_id} = news;
