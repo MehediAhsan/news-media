@@ -86,7 +86,7 @@ const displayNews = allNews => {
         newsDiv.classList.add('card','lg:card-side','bg-base-100','shadow-xl','mb-6');
         newsDiv.innerHTML = `
         <figure><img class="p-6" src="${thumbnail_url}" alt="Album"></figure>
-        <div class="card-body">
+        <div class="card-body ">
           <h2 class="card-title font-bold">${title}</h2>
           <p class="text-gray-500">${details.slice(0,350)+'...'}</p>
           <div class="flex items-center justify-between flex-wrap text-gray-600 text-lg my-4">
@@ -102,11 +102,11 @@ const displayNews = allNews => {
           <h3 class="text-lg font-semibold text-gray-600 ">${(total_view !== null) ? total_view : 'Not available'}</h3>
           </div>
           <div class="flex space-x-2.5 basis-1/2 md:basis-0 items-center justify-end w-1/5 h-6">
-          <i class="fa-regular fa-star-half-stroke"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-stroke"></i>
           </div>  
           <div class="card-actions justify-end">
           <!-- The button to open modal -->
